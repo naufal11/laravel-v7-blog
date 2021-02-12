@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -33,18 +33,33 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item  {{ Request::is('') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                        </li>
+                        <li class="nav-item dropdown  {{ Request::is('category*') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ __('Category') }}
+                            </a>
+                            <div class="dropdown-menu border-0 shadow-sm" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">{{ __('Hardcode') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('Hardcode') }}</a>
+                                <a class="dropdown-item" href="#">{{ __('Hardcode') }}</a>
+                            </div>
+                        </li>
+                        <li class="nav-item {{ Request::is('about-us*') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ url('/about-us') }}">{{ __('About Us') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <li class="nav-item  {{ Request::is('login') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                <li class="nav-item  {{ Request::is('register') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
@@ -54,7 +69,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -72,7 +87,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="pb-4">
             @yield('content')
         </main>
     </div>
