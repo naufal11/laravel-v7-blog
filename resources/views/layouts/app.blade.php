@@ -36,7 +36,7 @@
                         <li class="nav-item  {{ Request::is('/') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li>
-                        <li class="nav-item dropdown  {{ Request::is('category*') ? 'active' : '' }}">
+                        <li class="nav-item dropdown  {{ Request::is('category/*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ __('Category') }}
                             </a>
@@ -46,7 +46,7 @@
                                 <a class="dropdown-item" href="#">{{ __('Hardcode') }}</a>
                             </div>
                         </li>
-                        <li class="nav-item {{ Request::is('about-us*') ? 'active' : '' }}">
+                        <li class="nav-item {{ Request::is('about-us') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ url('/about-us') }}">{{ __('About Us') }}</a>
                         </li>
                     </ul>
