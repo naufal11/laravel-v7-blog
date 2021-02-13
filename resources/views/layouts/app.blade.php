@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item  {{ Request::is('') ? 'active' : '' }}">
+                        <li class="nav-item  {{ Request::is('/') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li>
                         <li class="nav-item dropdown  {{ Request::is('category*') ? 'active' : '' }}">
@@ -87,7 +87,7 @@
             </div>
         </nav>
 
-        <main class="pb-4">
+        <main class="{{ Request::is('/') ? 'pb-4' : 'py-4' }}">
             @yield('content')
         </main>
     </div>

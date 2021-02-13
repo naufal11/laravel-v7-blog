@@ -14,14 +14,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/welcome', 'PagesController@welcome')->middleware('auth')->name('welcome');
 
-Route::get('/about-us', function () {
-    return view('pages.about');
-});
+Route::get('/about-us', 'PagesController@about');
